@@ -30,4 +30,13 @@ router.patch('/:id', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+  const countryId = req.params.id
+  db.deleteCountry(countryId)
+  .then(country => {
+    res.json(country)
+  })
+  .catch(err => {console.log(err.message)})
+})
+
 module.exports = router

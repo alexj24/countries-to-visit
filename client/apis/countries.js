@@ -19,3 +19,9 @@ export function postCountry (newCountry) {
     .send(newCountry)
     .then(res => res.body)
 }
+
+export function deleteACountry (id) {
+  return request
+  .delete('/api/v1/countries/'+ id)
+  .then(response => response.body)
+}

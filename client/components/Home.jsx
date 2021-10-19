@@ -5,19 +5,22 @@ import { connect } from 'react-redux'
 // Components
 import AddCountry from './AddCountry'
 
-// other functions of mine
-import { countryVisitedThunk } from '../actions/countries'
+// Functions
+import { countryVisitedThunk, deleteCountryThunk } from '../actions/countries'
 
 
 function Home (props) {
   const { countries, dispatch } = props
 
-  // const toWatch = movies.filter(movie => movie.watched === false)
   const toVisit = countries.filter(country => !country.visited)
   const visited = countries.filter(country => country.visited)
 
   const clickHandler = (id) => {
     dispatch(countryVisitedThunk(id))
+  }
+
+  const deleteHandler = (id) => {
+    dispatch(deleteCountryThunk(id))
   }
 
   return (
@@ -32,12 +35,17 @@ function Home (props) {
           <li key={country.id}>
             {country.name}
             <button onClick={() => clickHandler(country.id)}>Visited!</button>
+            <button onClick={() => deleteHandler(country.id)}>Delete</button>
           </li>
         ))}
       </ul>
       <p>Visited:</p>
       <ul>
-        {visited.map(country => <li key={country.id}>{country.name}</li>)}
+        {visited.map(country => 
+        <li key={country.id}>
+          {country.name}
+          <button onClick={() => deleteHandler(country.id)}>Delete</button>
+        </li>)}
       </ul>
     </>
   )

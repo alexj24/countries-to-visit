@@ -1,8 +1,9 @@
-import { fetchAllCountries, postCountry, updateCountryVisited } from '../apis/countries'
+import { fetchAllCountries, postCountry, updateCountryVisited, deleteACountry } from '../apis/countries'
 
 export const SAVE_ALL_COUNTRIES = 'SAVE_ALL_COUNTRIES'
 export const SAVE_ONE_COUNTRY = 'SAVE_ONE_COUNTRY'
 export const COUNTRY_VISITED = 'COUNTRY_VISITED'
+export const DELETE_COUNTRY = 'DELETE_COUNTRY'
 
 // ACTION CREATORS
 
@@ -27,6 +28,13 @@ function countryVisited (countryId) {
   }
 }
 
+function deleteCountry (countryId) {
+  return {
+    type: DELETE_COUNTRY,
+    countryId
+  }
+}
+
 
 
 // THUNKS
@@ -44,12 +52,23 @@ export function countryVisitedThunk (countryId) {
   return (dispatch) => {
     updateCountryVisited(countryId)
       .then((everythingIsFine) => {
-        if (!everythingIsFine) {
+        if (!everythingIsFine) { // DELETE THIS??
           throw new Error('oops')
         }
 
         dispatch(countryVisited(countryId))
       })
+  }
+}
+
+export function deleteCountryThunk (countryId) {
+  return(dispatch) => {
+    deleteACountry(countryId) //API call
+    .then(() => {
+      dispatch(deleteCountry(countryId)) //ACTION call
+      })
+    .catch(err => {console.log(err.message)})
+
   }
 }
 
@@ -63,10 +82,10 @@ export function addACountry (name, flag, continent) {
     postCountry(newCountry)
       .then((obj) => {
         const { newId } = obj
-        newCounty.id  = newId
-        newCounty.watched = false
+        newCountry.id  = newId
+        newCountry.visited = false
 
-        dispatch(saveOneCountry(newCounty))
+        dispatch(saveOneCountry(newCountry))
       })
   }
 }

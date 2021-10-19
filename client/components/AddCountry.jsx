@@ -25,17 +25,26 @@ function AddMovie (props) {
         setResults(results)
       })
   }
-
-  // const saveCountry = (country) => { //FINISH THIS FUNCTION
-  //   const { id, title } = country // add stuff in here
-  //   dispatch(addACountry(id, title)) // and in here
-  // }
+  
+  const saveCountry = (country) => {
+    console.log("Country Data: ", country)
+    const name = country.name.common
+    const flag = country.flags.png
+    const continent = country.subregion
+    console.log("Name: ", name)
+    console.log("Flag: ", flag)
+    console.log("Continent: ", continent)
+    dispatch(addACountry( name, flag, continent ))
+  }
 
   const renderList = () => { // Edit layout of this function
       return <div>
         {searchResults.map(country => <div key={country.cca2}>
           <img className="results-img" src={country.flags.png} />
-          <p>{country.name.common} {country.subregion} <button onClick={() => saveCountry(country)}>Add</button> </p>
+          <p><strong>{country.name.common}</strong></p>
+          <p>Region: {country.subregion}</p>
+          <p>Capital: {country.capital}</p>
+          <p><button onClick={() => saveCountry(country)}>Add</button> </p>
           </div>)}
       </div>
   }
