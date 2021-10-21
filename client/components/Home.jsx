@@ -29,7 +29,7 @@ function Home (props) {
             <img className="results-img" src={country.flag} />
             <p className="name"><strong>{country.name}</strong></p>
             <p><strong>Region:</strong> {country.continent}</p>
-            <p><strong>Capital:</strong> {country.capital} ADD CAPITAL IN DB</p>
+            <p><strong>Capital:</strong> {country.capital}</p>
             <p className="add-button"><button onClick={() => deleteHandler(country.id)}>Delete</button><button onClick={() => clickHandler(country.id)}>Visited!</button></p>
         </div>
         ))}
@@ -42,7 +42,7 @@ function Home (props) {
             <img className="results-img" src={country.flag} />
             <p className="name"><strong>{country.name}</strong></p>
             <p><strong>Region:</strong> {country.continent}</p>
-            <p><strong>Capital:</strong> {country.capital} ADD CAPITAL IN DB</p>
+            <p><strong>Capital:</strong> {country.capital}</p>
             <p className="add-button"><button onClick={() => deleteHandler(country.id)}>Delete</button></p>
           </div>
         )}

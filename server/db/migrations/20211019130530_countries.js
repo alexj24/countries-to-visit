@@ -4,7 +4,8 @@ exports.up = (knex) => {
       t.string('name')
       t.string('flag')
       t.boolean('visited').defaultTo(false)
-      t.string('continent')
+      t.string('continent')      
+      t.string('capital')
     })
   }
   

@@ -70,11 +70,12 @@ export function deleteCountryThunk (countryId) {
   }
 }
 
-export function addACountry (name, flag, continent) {
+export function addACountry (name, flag, continent, capital) {
   const newCountry = {
     name,
     flag,
-    continent
+    continent,
+    capital
   }
   return (dispatch) => {
     postCountry(newCountry)

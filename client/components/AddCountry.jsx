@@ -30,7 +30,8 @@ function AddMovie (props) {
     const name = country.name.common
     const flag = country.flags.png
     const continent = country.subregion
-    dispatch(addACountry( name, flag, continent ))
+    const capital = country.capital
+    dispatch(addACountry( name, flag, continent, capital ))
   }
 
   const renderList = () => {
