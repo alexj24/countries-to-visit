@@ -27,24 +27,20 @@ function AddMovie (props) {
   }
   
   const saveCountry = (country) => {
-    console.log("Country Data: ", country)
     const name = country.name.common
     const flag = country.flags.png
     const continent = country.subregion
-    console.log("Name: ", name)
-    console.log("Flag: ", flag)
-    console.log("Continent: ", continent)
     dispatch(addACountry( name, flag, continent ))
   }
 
-  const renderList = () => { // Edit layout of this function
-      return <div>
-        {searchResults.map(country => <div key={country.cca2}>
+  const renderList = () => {
+      return <div className="card-container search">
+        {searchResults.map(country => <div key={country.cca2} className="country-card">
           <img className="results-img" src={country.flags.png} />
-          <p><strong>{country.name.common}</strong></p>
-          <p>Region: {country.subregion}</p>
-          <p>Capital: {country.capital}</p>
-          <p><button onClick={() => saveCountry(country)}>Add</button> </p>
+          <p className="name"><strong>{country.name.common}</strong></p>
+          <p><strong>Region:</strong> {country.subregion}</p>
+          <p><strong>Capital:</strong> {country.capital}</p>
+          <p className="add-button"><button onClick={() => saveCountry(country)}>Add</button> </p>
           </div>)}
       </div>
   }
@@ -55,14 +51,9 @@ function AddMovie (props) {
         <label htmlFor="name">Search for a country: </label>
         <input type="text" id="name" onChange={handleTyping} autoComplete="off" />
         <button>Search</button>
-      </form>
         <button onClick={toggleForm}>Close</button>
-        <button onClick={clearSearch}>Clear Search</button>
+      </form>
     </>
-  }
-
-  const clearSearch = () => { // COMPLETE THIS FUNCTION
-
   }
 
   return (

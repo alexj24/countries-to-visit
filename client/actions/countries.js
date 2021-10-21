@@ -45,27 +45,25 @@ export function getAllCountriesThunk () {
       .then(countries => {
         dispatch(saveAllCountries(countries))
       })
+      .catch(err => {console.log(err.message)})
   }
 }
 
 export function countryVisitedThunk (countryId) {
   return (dispatch) => {
     updateCountryVisited(countryId)
-      .then((everythingIsFine) => {
-        if (!everythingIsFine) { // DELETE THIS??
-          throw new Error('oops')
-        }
-
+      .then (() => {
         dispatch(countryVisited(countryId))
       })
+      .catch(err => {console.log(err.message)})
   }
 }
 
 export function deleteCountryThunk (countryId) {
   return(dispatch) => {
-    deleteACountry(countryId) //API call
+    deleteACountry(countryId)
     .then(() => {
-      dispatch(deleteCountry(countryId)) //ACTION call
+      dispatch(deleteCountry(countryId))
       })
     .catch(err => {console.log(err.message)})
 
@@ -87,5 +85,6 @@ export function addACountry (name, flag, continent) {
 
         dispatch(saveOneCountry(newCountry))
       })
+      .catch(err => {console.log(err.message)})
   }
 }

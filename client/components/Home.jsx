@@ -1,11 +1,8 @@
-// Modules
 import React from 'react'
 import { connect } from 'react-redux'
 
-// Components
 import AddCountry from './AddCountry'
 
-// Functions
 import { countryVisitedThunk, deleteCountryThunk } from '../actions/countries'
 
 
@@ -25,28 +22,33 @@ function Home (props) {
 
   return (
     <>
-      <h3>HOME</h3>
+      <h3>Yet To Visit:</h3>
+      <div className="card-container">
+        {toVisit.map(country => (
+          <div key={country.id} className="country-card">
+            <img className="results-img" src={country.flag} />
+            <p className="name"><strong>{country.name}</strong></p>
+            <p><strong>Region:</strong> {country.continent}</p>
+            <p><strong>Capital:</strong> {country.capital} ADD CAPITAL IN DB</p>
+            <p className="add-button"><button onClick={() => deleteHandler(country.id)}>Delete</button><button onClick={() => clickHandler(country.id)}>Visited!</button></p>
+        </div>
+        ))}
+      </div>
+
+      <h3>Visited:</h3>
+      <div className="card-container">
+        {visited.map(country => 
+          <div key={country.id} className="country-card">
+            <img className="results-img" src={country.flag} />
+            <p className="name"><strong>{country.name}</strong></p>
+            <p><strong>Region:</strong> {country.continent}</p>
+            <p><strong>Capital:</strong> {country.capital} ADD CAPITAL IN DB</p>
+            <p className="add-button"><button onClick={() => deleteHandler(country.id)}>Delete</button></p>
+          </div>
+        )}
+      </div>
 
       <AddCountry />
-
-      <p>To visit:</p>
-      <ul>
-        {toVisit.map(country => (
-          <li key={country.id}>
-            {country.name}
-            <button onClick={() => clickHandler(country.id)}>Visited!</button>
-            <button onClick={() => deleteHandler(country.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-      <p>Visited:</p>
-      <ul>
-        {visited.map(country => 
-        <li key={country.id}>
-          {country.name}
-          <button onClick={() => deleteHandler(country.id)}>Delete</button>
-        </li>)}
-      </ul>
     </>
   )
 }

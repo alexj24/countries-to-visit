@@ -2,30 +2,58 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+  min-height: 100vh;
 }
 
 body {
-  background-color: #eeebe4;
   color: #28282e;
   font-family: "Lato", sans-serif;
 }
 
-.results-img {
-  max-height: 100px;
-  border: solid 3px purple;
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: black;
+  font-weight: bold;
 }
 
-div div {
-  padding: 15px;
-  margin: 10px;
-  border: solid 5px green;
-  width: 160px;
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: white;
+}
+
+.results-img {
+  max-height: 100px;
+  margin: 0 auto;
   display: block;
 }
 
-div {
+.country-card {
+  padding: 15px;
+  margin: 10px;
+  border: solid 5px white;
+  width: auto;
+  display: block;
+  background-color: lightsteelblue;
+}
+
+.card-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search {
+  margin-bottom: 100px;
 }
 
 button {
@@ -35,5 +63,40 @@ button {
 ul button {
   margin-right: 0;
 }
+
+form input {
+  font-size: 1.75rem;
+  border-radius: 25px;
+  border: none;
+}
+
+form button, div button {
+  margin-right: 0;
+  height: 2.5rem;
+  border-radius: 25px;
+  border: none;
+  width: 100px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form button:hover, div button:hover {
+  background-color: grey;
+}
+
+form {
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.name {
+  font-size: 1.5rem;
+}
+
+.add-button {
+  text-align: center;
+  margin-bottom: 0;
+}
+
 
 /*# sourceMappingURL=styles.css.map*/
